@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Data and model artifacts (kept out of the repo)
+data/raw/*
+data/processed/*
+models/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!models/.gitkeep
+*.onnx
+*.bin
+*.safetensors
+*.pt
+*.pkl
+*.joblib
+
+# Gradio / OS
+.gradio/
+flagged/
+.DS_Store
+
+# Homework brief
+*.docx

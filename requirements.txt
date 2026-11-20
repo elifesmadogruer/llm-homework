@@ -1,0 +1,27 @@
+# Data
+datasets>=2.19
+pandas>=2.1
+numpy>=1.26
+
+# Classical NLP / baselines
+scikit-learn>=1.4
+rapidfuzz>=3.6
+gensim>=4.3.3
+
+# Neural networks / Transformers
+torch>=2.2
+transformers>=4.40
+accelerate>=0.30
+
+# Efficient inference
+onnx>=1.16
+onnxruntime>=1.18
+
+# Application
+gradio>=4.36
+
+# Utilities
+tqdm>=4.66
+matplotlib>=3.8
+pyyaml>=6.0
+pytest>=8.0
