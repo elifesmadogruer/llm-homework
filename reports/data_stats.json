@@ -1,0 +1,39 @@
+{
+  "train": {
+    "n": 28580,
+    "class_counts": {
+      "NOT": 23062,
+      "OFF": 5518
+    },
+    "off_ratio": 0.1931,
+    "tokens_mean": 15.47,
+    "tokens_median": 12.0,
+    "tokens_p95": 36.0,
+    "tokens_max": 82
+  },
+  "val": {
+    "n": 3176,
+    "class_counts": {
+      "NOT": 2563,
+      "OFF": 613
+    },
+    "off_ratio": 0.193,
+    "tokens_mean": 15.33,
+    "tokens_median": 12.0,
+    "tokens_p95": 35.0,
+    "tokens_max": 59
+  },
+  "test": {
+    "n": 3528,
+    "class_counts": {
+      "NOT": 2812,
+      "OFF": 716
+    },
+    "off_ratio": 0.2029,
+    "tokens_mean": 15.8,
+    "tokens_median": 13.0,
+    "tokens_p95": 36.0,
+    "tokens_max": 58
+  },
+  "train_test_text_overlap": 0
+}
