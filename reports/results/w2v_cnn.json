@@ -1,0 +1,82 @@
+{
+  "model": "w2v_cnn",
+  "threshold": 0.63,
+  "test": {
+    "macro_f1": 0.7482,
+    "accuracy": 0.8447,
+    "off_precision": 0.6338,
+    "off_recall": 0.5559,
+    "off_f1": 0.5923,
+    "not_f1": 0.9041,
+    "confusion": [
+      [
+        2582,
+        230
+      ],
+      [
+        318,
+        398
+      ]
+    ]
+  },
+  "size_mb": 12.168,
+  "latency": {
+    "n_runs": 200,
+    "mean_ms": 0.233,
+    "p50_ms": 0.221,
+    "p95_ms": 0.346
+  },
+  "hardware": "Apple M2 (Darwin arm64, CPU only)",
+  "val": {
+    "macro_f1": 0.7466,
+    "accuracy": 0.8504,
+    "off_precision": 0.6302,
+    "off_recall": 0.5449,
+    "off_f1": 0.5844,
+    "not_f1": 0.9088,
+    "confusion": [
+      [
+        2367,
+        196
+      ],
+      [
+        279,
+        334
+      ]
+    ]
+  },
+  "best_epoch": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9682,
+      "val_macro_f1": 0.7221
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7873,
+      "val_macro_f1": 0.7431
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6268,
+      "val_macro_f1": 0.7466
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.4766,
+      "val_macro_f1": 0.7412
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.3506,
+      "val_macro_f1": 0.7346
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.2556,
+      "val_macro_f1": 0.723
+    }
+  ],
+  "embedding_init": "word2vec"
+}
