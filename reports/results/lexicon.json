@@ -1,0 +1,67 @@
+{
+  "model": "lexicon",
+  "threshold": 0.05,
+  "test": {
+    "macro_f1": 0.7142,
+    "accuracy": 0.8498,
+    "off_precision": 0.7435,
+    "off_recall": 0.3966,
+    "off_f1": 0.5173,
+    "not_f1": 0.911,
+    "confusion": [
+      [
+        2714,
+        98
+      ],
+      [
+        432,
+        284
+      ]
+    ]
+  },
+  "size_mb": 0.021,
+  "latency": {
+    "n_runs": 200,
+    "mean_ms": 0.048,
+    "p50_ms": 0.042,
+    "p95_ms": 0.108
+  },
+  "hardware": "Apple M2 (Darwin arm64, CPU only)",
+  "val": {
+    "macro_f1": 0.6991,
+    "accuracy": 0.852,
+    "off_precision": 0.7391,
+    "off_recall": 0.3605,
+    "off_f1": 0.4846,
+    "not_f1": 0.9136,
+    "confusion": [
+      [
+        2485,
+        78
+      ],
+      [
+        392,
+        221
+      ]
+    ]
+  },
+  "val_seed_only": {
+    "macro_f1": 0.6702,
+    "accuracy": 0.8514,
+    "off_precision": 0.8373,
+    "off_recall": 0.2855,
+    "off_f1": 0.4258,
+    "not_f1": 0.9146,
+    "confusion": [
+      [
+        2529,
+        34
+      ],
+      [
+        438,
+        175
+      ]
+    ]
+  },
+  "n_mined": 75
+}
