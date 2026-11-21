@@ -1,0 +1,39 @@
+training on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+train messages hitting max_len=64: 1024
+W1121 14:45:11.171000 56083 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 16896.08it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: dbmdz/bert-base-turkish-cased
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+classifier.bias                            | MISSING    | 
+classifier.weight                          | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  epoch 1 step 100 loss=0.5684 75s
+  epoch 1 step 200 loss=0.4685 178s
+  epoch 1 step 300 loss=0.4199 305s
+  epoch 1 step 400 loss=0.3900 435s
+  epoch 1 step 500 loss=0.3741 568s
+  epoch 1 step 600 loss=0.3586 715s
+  epoch 1 step 700 loss=0.3490 860s
+  epoch 1 step 800 loss=0.3419 993s
+epoch 1 loss=0.3360 val macro-F1=0.8382 (t=0.44) 1147s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:03<00:00,  3.67s/it]Writing model shards: 100%|██████████| 1/1 [00:03<00:00,  3.67s/it]
+  epoch 2 step 100 loss=0.1942 127s
+  epoch 2 step 200 loss=0.1972 239s
+  epoch 2 step 300 loss=0.1993 354s
+  epoch 2 step 400 loss=0.2030 770s
+  epoch 2 step 500 loss=0.2062 1756s
+  epoch 2 step 600 loss=0.2025 2771s
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:276: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/loky-56083-zldpsamd'}
+  warnings.warn(

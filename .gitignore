@@ -28,3 +28,7 @@ flagged/
 
 # Homework brief
 *.docx
+
+# Runtime logs and exporter leftovers
+reports/app.log
+*.data

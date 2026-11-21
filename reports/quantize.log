@@ -1,0 +1,5 @@
+W1122 00:39:20.529000 76269 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 3752.52it/s]
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+berturk_fp32_onnx: test macro-F1=0.8152 size=422.959 MB latency=79.46 ms agreement=1.0000 max|dp|=0.0000
+berturk_int8_onnx: test macro-F1=0.8141 size=107.426 MB latency=25.073 ms agreement=0.9923 max|dp|=0.4475
