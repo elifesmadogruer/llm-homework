@@ -1,0 +1,33 @@
+{
+  "model": "berturk_int8_onnx",
+  "threshold": 0.44,
+  "test": {
+    "macro_f1": 0.8141,
+    "accuracy": 0.8846,
+    "off_precision": 0.7418,
+    "off_recall": 0.662,
+    "off_f1": 0.6996,
+    "not_f1": 0.9286,
+    "confusion": [
+      [
+        2647,
+        165
+      ],
+      [
+        242,
+        474
+      ]
+    ]
+  },
+  "size_mb": 107.426,
+  "latency": {
+    "n_runs": 200,
+    "mean_ms": 25.073,
+    "p50_ms": 21.886,
+    "p95_ms": 48.068
+  },
+  "hardware": "Apple M2 (Darwin arm64, CPU only)",
+  "agreement_with_pytorch": 0.9923,
+  "max_abs_prob_diff": 0.4475,
+  "quantization": "dynamic INT8 (per-channel weights, ONNX Runtime)"
+}
