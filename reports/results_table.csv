@@ -1,0 +1,7 @@
+model,macro_f1,off_f1,size_mb,latency_ms,latency_p95_ms,latency_1thread_ms,latency_1thread_p95_ms,within_budget_1thread
+BERTurk · INT8 · ONNX Runtime,0.8141,0.6996,107.4,22.715,53.14,30.345,64.401,True
+BERTurk · FP32 · ONNX Runtime,0.8152,0.7022,423.0,66.926,135.703,88.692,189.5,False
+BERTurk · FP32 · PyTorch,0.8152,0.7022,422.7,35.013,43.701,36.366,49.299,True
+word2vec + 1D-CNN,0.7482,0.5923,12.2,0.343,0.496,0.268,0.424,True
+tf-idf + LogReg,0.7715,0.6339,2.5,1.284,1.763,1.222,1.641,True
+Lexicon + edit distance,0.7142,0.5173,0.0,0.155,0.38,0.082,0.193,True
