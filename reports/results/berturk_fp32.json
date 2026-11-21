@@ -1,0 +1,57 @@
+{
+  "model": "berturk_fp32",
+  "threshold": 0.44,
+  "test": {
+    "macro_f1": 0.8152,
+    "accuracy": 0.8844,
+    "off_precision": 0.7355,
+    "off_recall": 0.6718,
+    "off_f1": 0.7022,
+    "not_f1": 0.9282,
+    "confusion": [
+      [
+        2639,
+        173
+      ],
+      [
+        235,
+        481
+      ]
+    ]
+  },
+  "size_mb": 422.721,
+  "latency": {
+    "n_runs": 200,
+    "mean_ms": 22.755,
+    "p50_ms": 21.565,
+    "p95_ms": 27.621
+  },
+  "hardware": "Apple M2 (Darwin arm64, CPU only)",
+  "val": {
+    "macro_f1": 0.8382,
+    "accuracy": 0.9033,
+    "off_precision": 0.7792,
+    "off_recall": 0.6966,
+    "off_f1": 0.7356,
+    "not_f1": 0.9409,
+    "confusion": [
+      [
+        2442,
+        121
+      ],
+      [
+        186,
+        427
+      ]
+    ]
+  },
+  "best_epoch": 1,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.336,
+      "val_macro_f1": 0.8382,
+      "threshold": 0.44
+    }
+  ]
+}
