@@ -13,13 +13,21 @@ MODEL_LOADERS = {
 }
 
 
+def _require(path):
+    if not path.exists():
+        raise FileNotFoundError(f"{path} not found")
+    return path
+
+
 def _onnx(file: str) -> Moderator:
     from moderation.models.onnx_model import OnnxBertModerator
+    _require(MODELS_DIR / "berturk" / file)
     return OnnxBertModerator(MODELS_DIR / "berturk", file)
 
 
 def _bert() -> Moderator:
     from moderation.models.bert import BertModerator
+    _require(MODELS_DIR / "berturk" / "model.safetensors")
     return BertModerator(MODELS_DIR / "berturk")
 
 
