@@ -181,7 +181,7 @@ baseline to a quantized BERTurk."
 **0:15–1:15 — app (http://127.0.0.1:7860), model: BERTurk INT8**
 "This is the app. It runs the INT8-quantized BERTurk on CPU by default."
 1. `bu akşam maç kaç saatte başlıyor?` — "A normal message is labeled clean. On the right, the response
-   time is logged: a few milliseconds, well inside our 50-millisecond budget."
+   time is logged: about 20 to 30 milliseconds, inside our 50-millisecond budget."
 2. `s4l4k misin sen, oyunu bilmiyorsun` — "Here is an insult written in leetspeak. It is flagged as
    offensive, and the insulting word is masked."
 3. `senin gibi beyni yarım adamlarla oynamak zorunda kalıyoruz` — "Now a harder case: an insult with no
