@@ -24,8 +24,8 @@ SWE015 – Introduction to Large Language Models · Use Case 4
 
 - A gaming platform must flag offensive chat messages in Turkish **live**, on a **CPU-only** server.
 - Users: platform moderators and players; flagged messages are masked before others see them.
-- Turkish chat is noisy: leetspeak (`s1kt1r`), repeated letters (`salaaak`), spaced letters
-  (`S A L A K`), missing Turkish characters (`gerizekali`), rich suffixes (`salaksın`).
+- Turkish chat is noisy: leetspeak (`s4l4k`), repeated letters (`saaalak`), spaced letters
+  (`A P T A L`), missing Turkish characters (`aptalsin`), rich suffixes (`aptallarla`).
 - Success =
   1. **macro-F1** on the held-out test set (classes are imbalanced, ~20% offensive)
   2. **latency budget: mean ≤ 50 ms per message on 1 CPU thread** (one moderation worker
@@ -73,7 +73,7 @@ SWE015 – Introduction to Large Language Models · Use Case 4
 - Levenshtein distance ≤ 1 only for roots of ≥ 7 letters: on val, 6-letter roots produced mostly false
   positives (`gerçek`/`gerzek`, `gözünü`/`götünü`).
 - Turkish-letter tokens are matched against the Turkish lexicon, ASCII-only tokens against the folded one
-  (`sıktığım` ≠ `siktiğim`).
+  (keeps the ı / i difference).
 
 **tf-idf + logistic regression**
 - word 1–2-grams + character 2–5-grams (inside word boundaries), sublinear tf, class-balanced LR.
@@ -144,12 +144,12 @@ Latency varies with machine load: a first benchmark run measured INT8 at 11.5 ms
 
 ### Slide 11 — Limitations, failure examples, next steps
 
-Failure examples from the test set (INT8 BERTurk):
-- Missed (gold OFF, P(off) = 0.016): *"Paris gibi, şimdi hep çarşaflı dolu."* — offensive only through
-  cultural/political context.
-- False alarm (gold NOT, P(off) = 0.991): *"Çok dertlisin aqam noldu sana?"* — friendly use of a swear word.
-- Label noise: *"Gerizekalılar buna emin olun …"* is labeled NOT in the gold data, but the model
-  flags it (P(off) = 0.973).
+Failure examples (INT8 BERTurk):
+- Missed, test set (gold OFF, P(off) = 0.016): *"Paris gibi, şimdi hep çarşaflı dolu."* — offensive only
+  through cultural/political context.
+- Missed, new input (P(off) = 0.17): *"sen tam bir aptaaal oyuncusun"* — BERTurk gets the light
+  normalization, so repeated letters break the word; tf-idf (0.96) and the lexicon catch it.
+- The gold labels are noisy: some messages with clear insults are labeled NOT.
 
 Limitations
 - Tweets ≠ game chat; mined lexicon terms carry topic bias (`türbanlı`, `cumhuriyeti`).
@@ -171,28 +171,31 @@ Next steps
 
 ---
 
-## Demo video script (≤ 2:00)
+## Demo video script (≤ 2:00, narrated)
 
-**0:00–0:15 — Problem**
-"Gaming platforms must hide offensive Turkish chat messages instantly, on CPU-only servers.
-I built a live moderation app and compared four models, from a rule baseline to a quantized BERTurk."
+**0:00–0:15 — title slide**
+"Hi, I'm Elif Esma Doğruer. Gaming platforms have to hide offensive Turkish chat messages instantly,
+on CPU-only servers. I built a live moderation app and compared four models, from a rule-based
+baseline to a quantized BERTurk."
 
-**0:15–1:15 — Live demo** (app at http://127.0.0.1:7860, model: BERTurk INT8)
-1. Type a clean message: `bu akşam maç kaç saatte başlıyor?` → green *clean*, latency appears in the log.
-2. Type a noisy insult: `s1kt1r git buradan gerizekalı` → red *offensive*, words masked (`s∗∗∗∗∗ … g∗∗∗∗∗∗∗∗∗`).
-3. Difficult case — insult without any swear word:
-   `senin gibi beyni yarım adamlarla oynamak zorunda kalıyoruz` → BERTurk INT8: offensive (0.95);
-   no known word to mask, so the whole message is hidden.
-4. Spaced letters: `L A N  S A L A K misin` → offensive, `S∗∗∗∗` masked.
-5. Open "Compare all models" on the difficult case → lexicon (0.00) and CNN (0.19) miss it,
-   tf-idf is borderline (0.59), BERTurk is confident; point to the latency column. Switch the
-   dropdown to tf-idf and send one message to show per-model rows in the side panel.
-   (Values measured with the trained models; check them once more while recording.)
+**0:15–1:15 — app (http://127.0.0.1:7860), model: BERTurk INT8**
+"This is the app. It runs the INT8-quantized BERTurk on CPU by default."
+1. `bu akşam maç kaç saatte başlıyor?` — "A normal message is labeled clean. On the right, the response
+   time is logged: a few milliseconds, well inside our 50-millisecond budget."
+2. `s4l4k misin sen, oyunu bilmiyorsun` — "Here is an insult written in leetspeak. It is flagged as
+   offensive, and the insulting word is masked."
+3. `senin gibi beyni yarım adamlarla oynamak zorunda kalıyoruz` — "Now a harder case: an insult with no
+   offensive word at all. BERTurk still flags it, and since there is no single word to mask, the whole
+   message is hidden."
+4. Open "Compare all models", click "Run all models" — "Comparing all models on this message: the lexicon
+   and the CNN miss it, tf-idf is borderline, and BERTurk is confident. Each model's latency is shown too."
 
-**1:15–1:45 — Architecture and results**
-Show `architecture.png` (input → normalization → model → threshold → masking → UI, all on CPU)
-and the results table: INT8 BERTurk 0.814 macro-F1, 107 MB, 30 ms on one thread vs. 89 ms for FP32.
+**1:15–1:45 — architecture slide, then results slide**
+"Each message is normalized for leetspeak, repeated letters and Turkish casing. The selected model gives
+a probability, a threshold tuned on validation data decides, and a lexicon masks the words."
+"On the official test set, BERTurk reaches 0.81 macro-F1 versus 0.77 for tf-idf. INT8 quantization makes
+it four times smaller and three times faster on one thread, with almost no accuracy loss."
 
-**1:45–2:00 — Conclusion**
-"BERTurk is clearly the most accurate, and INT8 quantization makes it 4× smaller and 3× faster
-with almost no accuracy loss, so it fits the 50 ms budget. tf-idf remains a strong cheap fallback."
+**1:45–2:00 — findings slide**
+"So BERTurk is the most accurate model, and quantization is what makes it fit a real-time CPU budget.
+tf-idf remains a strong, cheap fallback. Thanks for watching."

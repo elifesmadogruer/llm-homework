@@ -116,9 +116,9 @@ def on_clear():
 
 EXAMPLES = [
     "bu akşam maç kaç saatte başlıyor?",
-    "s1kt1r git buradan gerizekalı",
-    "takımın kadar ezik bir oyuncusun",
-    "L A N  S A L A K  misin",
+    "s4l4k misin sen, oyunu bilmiyorsun",
+    "senin gibi beyni yarım adamlarla oynamak zorunda kalıyoruz",
+    "A P T A L  misin",
     "harika oynadın kanka, tebrikler!",
 ]
 

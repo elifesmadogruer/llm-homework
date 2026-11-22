@@ -59,7 +59,7 @@ def architecture() -> None:
     # 2. preprocessing
     box(ax, 0.17, 0.70, 0.17, 0.20, "normalize()",
         "drop @mentions, URLs, e-mails\njoin spaced letters (S A L A K)\nTurkish lowercasing (I→ı, İ→i)\n"
-        "leetspeak (s1kt1r→siktir)\ncollapse repeats (saaaçma)", COLORS["pre"])
+        "leetspeak (s4l4k→salak)\ncollapse repeats (saaaçma)", COLORS["pre"])
     box(ax, 0.17, 0.44, 0.17, 0.17, "light_normalize()",
         "drop @mentions, URLs, e-mails\njoin spaced letters\ncase & noise kept\n(for BERTurk WordPiece)",
         COLORS["pre"])
