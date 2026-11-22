@@ -11,9 +11,9 @@ Fill in the `<...>` fields before exporting to PDF.
 **Real-Time Chat Moderation for Turkish**
 SWE015 – Introduction to Large Language Models · Use Case 4
 
-- Name: `<your name>` · Student ID: `<id>`
+- Name: Elif Esma Doğruer · Student ID: 220901587
 - Repository: https://github.com/elifesmadogruer/llm-homework
-- Demo video: `<YouTube unlisted / Drive link>`
+- Demo video: https://drive.google.com/drive/folders/1m2h9foIpZXI9xyWJIZ2ddfpwbJ4sUH1U
 - Model weights: https://huggingface.co/elifesma/llm-homework
 
 ---
